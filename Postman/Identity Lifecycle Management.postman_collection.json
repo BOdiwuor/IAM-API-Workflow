@@ -1,0 +1,174 @@
+{
+  "info": {
+    "_postman_id": "f7670d32-c552-4dc1-8dc7-3c3dae054ea7",
+    "name": "Identity Lifecycle Management",
+    "description": "This collection models the end-to-end identity lifecycle for user accounts, using the [Reqres](https://reqres.in) API as a reference backend. It is organized into four sequential stages that mirror how a user moves through a system — from initial provisioning to final removal.\n\n**User Onboarding** — Covers the creation of new user accounts by submitting profile details via a `POST` request to the `/api/users` endpoint.\n\n**Identity Verification** — Handles the lookup and confirmation of existing users by retrieving their profile data via a `GET` request to the `/api/users` endpoint.\n\n**Access Management** — Manages updates to user account details, applying partial modifications to a user's record via a `PATCH` request to `/api/users/{id}`.\n\n**User Offboarding** — Handles the deprovisioning and permanent removal of user accounts via a `DELETE` request to `/api/users/{id}`.\n\nTogether, these folders provide a structured workflow for testing the full lifecycle of a user identity — create, read, update, and delete — against a live API environment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54868746"
+  },
+  "item": [
+    {
+      "name": "User Onboarding",
+      "item": [
+        {
+          "name": "Request",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "reqres_191cf8caa06f4de98340a9e826fd189f",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n            \r\n            \"email\": \"brenda.test@reqres.in\",\r\n            \"first_name\": \"Brenda\",\r\n            \"last_name\": \"Test\",\r\n            \"avatar\": \"https://reqres.in/img/faces/1-image.jpg\"\r\n        }"
+            },
+            "url": {
+              "raw": "https://reqres.in/api/users",
+              "protocol": "https",
+              "host": [
+                "reqres",
+                "in"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Contains requests for registering and creating new user accounts. This folder handles the initial step of the identity lifecycle — provisioning a new user in the system by submitting their profile details via a POST request to the users endpoint."
+    },
+    {
+      "name": "Identity Verification",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "reqres_191cf8caa06f4de98340a9e826fd189f",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://reqres.in/api/users",
+              "protocol": "https",
+              "host": [
+                "reqres",
+                "in"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Contains requests for verifying and retrieving existing user identities. This folder covers the lookup step of the identity lifecycle — confirming that a user exists in the system by fetching their profile data via a GET request to the users endpoint."
+    },
+    {
+      "name": "Access Management",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "reqres_191cf8caa06f4de98340a9e826fd189f",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": " {\r\n            \"id\": 40,\r\n            \"email\": \"gregory.bluth@reqres.in\",\r\n            \"first_name\": \"Gregory\"\r\n        }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://reqres.in/api/users/40",
+              "protocol": "https",
+              "host": [
+                "reqres",
+                "in"
+              ],
+              "path": [
+                "api",
+                "users",
+                "40"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Contains requests for modifying and updating existing user account details. This folder handles the access and profile management step of the identity lifecycle — applying partial updates to a user's record in the system via a PATCH request to the users endpoint."
+    },
+    {
+      "name": "User Offboarding",
+      "item": [
+        {
+          "name": "New Request",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "x-api-key",
+                "value": "reqres_191cf8caa06f4de98340a9e826fd189f",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "https://reqres.in/api/users/40",
+              "protocol": "https",
+              "host": [
+                "reqres",
+                "in"
+              ],
+              "path": [
+                "api",
+                "users",
+                "40"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "description": "Contains requests for deprovisioning and removing user accounts from the system. This folder handles the final step of the identity lifecycle — permanently deleting a user's record via a DELETE request to the users endpoint."
+    }
+  ]
+}
